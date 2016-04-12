@@ -12,6 +12,10 @@ def readFile():
         for row in data:   # iterates the rows of the file in orders
                 if row == ['Cave', 'Number of Pitches', 'Pitch 1', ' Pitch 2', ' Pitch 3...']:
                     continue #do nothing
+                elif row == []:
+                    continue #do nothing
+                elif row[0] == "#":
+                    continue #do nothing
                 mA.append(row)
             
     finally:
