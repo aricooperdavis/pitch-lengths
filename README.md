@@ -21,19 +21,19 @@ An example operation is shown below:
         If no name is given this defaults to 'pitchFile.csv'.
     
         The following commands can be run:
-            reqRope     returns min rope needed for every cave without joining ropes
-            totCave     returns the number of caves to be evaluated
-            noJoinN     returns the number of caves possible without joining ropes
-            noJoinL     returns a list of the caves possible without joining ropes
-            yesJoinN    returns the number of caves possible with joining ropes
-            yesJoinL    returns a list of caves in which rope joining would be required
-            histogram   displays a histogram of the pitch inforamtion (experimental)
-            help        displays this usage information
+            ideal_rope          min rope needed for every cave w/o joining ropes
+            total_caves         number of caves in .csv file
+            num_poss_norm       number of caves possible w/o joining ropes
+            list_poss_norm      list of the caves possible w/o joining ropes
+            num_poss_join       number of caves possible w/ joining ropes
+            list_poss_join      list of caves in which rope joining is required
+            histogram           display histogram of all pitch (experimental)
+            help                displays this usage information
         
         Some of these commands will require you to specify the rope you have using:
             .\pitch-lengths.py update_rope
 
         For example, a common usage might be:
-            .\pitch-lengths.py pitchFile.csv reqRope totCave
+            .\pitch-lengths.py pitchFile.csv ideal_rope total_caves
         
 Please feel free to ask any questions or get involved with the development of this project.

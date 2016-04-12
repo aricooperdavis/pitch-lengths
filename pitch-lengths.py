@@ -13,20 +13,20 @@ The <pitchFile> argument should contain the name of your file.
 If no name is given this defaults to 'pitchFile.csv'.
     
 The following commands can be run:
-    reqRope     returns min rope needed for every cave without joining ropes
-    totCave     returns the number of caves to be evaluated
-    noJoinN     returns the number of caves possible without joining ropes
-    noJoinL     returns a list of the caves possible without joining ropes
-    yesJoinN    returns the number of caves possible with joining ropes
-    yesJoinL    returns a list of caves in which rope joining would be required
-    histogram   displays a histogram of the pitch inforamtion (experimental)
-    help        displays this usage information
+    ideal_rope          min rope needed for every cave w/o joining ropes
+    total_caves         number of caves in .csv file
+    num_poss_norm       number of caves possible w/o joining ropes
+    list_poss_norm      list of the caves possible w/o joining ropes
+    num_poss_join       number of caves possible w/ joining ropes
+    list_poss_join      list of caves in which rope joining is required
+    histogram           display histogram of all pitch (experimental)
+    help                displays this usage information
 
 Some of these commands will require you to specify the rope you have using:
     .\pitch-lengths.py update_rope
 
 For example, a common usage might be:
-    .\pitch-lengths.py pitchFile.csv reqRope totCave"""
+    .\pitch-lengths.py pitchFile.csv ideal_rope total_caves"""
 
 def readFile(pitchFileName):
     """reads the csv file and outputs it as a python array"""
@@ -143,11 +143,11 @@ def withTying(given_rope, halfSortedArray, max_pitches, which_caves_var):
 
 def makeHistogram(numericArray):
     numericList = np.trim_zeros(sorted(numericArray.flatten()))
-    n, bins, patches = plt.hist(numericList, bins=10, normed=1, facecolor='green', alpha=0.75)
+    n, bins, patches = plt.hist(numericList, bins=9, normed=1, facecolor='green', alpha=0.75)
     plt.title(r'$\mathrm{Histogram\ of\ pitch\ lengths}$')
     plt.xlabel('Pitch Length')
     plt.ylabel('Probability')
-    plt.axis([0, 90, 0, 0.04])
+    plt.axis([np.amin(numericArray)-1, np.amax(numericArray)+1, 0, 0.04])
     plt.grid(True)
     plt.show()
 
@@ -185,24 +185,24 @@ def runArgs(commands, pitchFileName, usage_string):
             numericArray, total_caves, max_pitches, total_pitches, pitchesArray = numArray(masterArray)
             max_pitch_length, min_pitch_length, avg_pitch_length, max_pitch_num, min_pitch_num, avg_pitch_num, sortedArray, halfSortedArray = sortNumeric(numericArray, total_caves, pitchesArray)
             required_rope = sortedArray[0]
-            if commands[i] == "reqRope":
-                print "reqRope: "+str(required_rope)
-            elif commands[i] == "totCave":
-                print "totCave: "+str(total_caves)
+            if commands[i] == "ideal_rope":
+                print "ideal_rope: "+str(required_rope)
+            elif commands[i] == "total_caves":
+                print "total_caves: "+str(total_caves)
             else:
                 my_rope = read_rope()
                 caves_accessible, which_caves_var = ropeCheck(my_rope, halfSortedArray, max_pitch_num)
                 which_caves = nameCaves(which_caves_var, masterArray)
                 which_caves_var_updated, new_caves_var_possible = withTying(my_rope, halfSortedArray, max_pitches, which_caves_var)
                 new_cave_names = nameCaves(new_caves_var_possible, masterArray)
-                if commands[i] == "noJoinN":
-                    print "noJoinN: "+str(caves_accessible)
-                elif commands[i] == "noJoinL":
-                    print "noJoinL: "+str(which_caves)
-                elif commands[i] == "yesJoinN":
-                    print "yesJoinN: "+str(len(which_caves_var_updated))
-                elif commands[i] == "yesJoinL":
-                    print "yesJoinL: "+str(new_cave_names)
+                if commands[i] == "num_poss_norm":
+                    print "num_poss_norm: "+str(caves_accessible)
+                elif commands[i] == "list_poss_norm":
+                    print "list_poss_norm: "+str(which_caves)
+                elif commands[i] == "num_poss_join":
+                    print "num_poss_join: "+str(len(which_caves_var_updated))
+                elif commands[i] == "list_poss_join":
+                    print "list_poss_join: "+str(new_cave_names)
                 elif commands[i] == "histogram":
                     print "Displaying histogram."
                     makeHistogram(numericArray)
