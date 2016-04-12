@@ -133,19 +133,25 @@ def withTying(given_rope, halfSortedArray, max_pitches, which_caves_var):
             
 def argumentProcessing(usage_string):
     commands = []
+    sub=0
     numArg = len(sys.argv)-1
     pitchFileName = "pitchFile.csv"
     if numArg == 0:
         print usage_string
         sys.exit()
-    elif numArg > 1:
-        if sys.argv[1][-4:] == ".csv":
+    elif numArg > 0:
+        if sys.argv[1][-4:] == ".csv" and numArg == 1:
+            print usage_string
+        elif sys.argv[1][-4:] == ".csv" and numArg != 1:
             pitchFileName = sys.argv[1]
-        for i in range(2,numArg+1):
+        elif sys.argv[1][-4:] != ".csv":
+            sub=1
+            print "Using default pitch file: 'pitchFile.csv'..." #TODO supress this message when just help is called
+        for i in range(2-sub,numArg+1):
             commands.append(sys.argv[i])
     return pitchFileName, commands
 
-def runArgs(commands, pitchFileName):
+def runArgs(commands, pitchFileName, usage_string):
     my_rope = [50,50,30,30,15] #put your currently owned ropes here, or required_rope to test
     masterArray = readFile(pitchFileName)
     numericArray, total_caves, max_pitches, total_pitches, pitchesArray = numArray(masterArray)
@@ -169,12 +175,15 @@ def runArgs(commands, pitchFileName):
             print "yesJoinN: "+str(len(which_caves_var_updated))
         elif commands[i] == "yesJoinL":
             print "yesJoinL: "+str(new_cave_names)
+        elif commands[i] == "help" or "Help" or "HELP":
+            print usage_string
+            sys.exit()
         else:
             print "Command error!"
             sys.exit()
             
 pitchFileName, commands = argumentProcessing(usage_string)
-runArgs(commands, pitchFileName)
+runArgs(commands, pitchFileName, usage_string)
 
 #print "You've told me that you have the following rope lengths: "+str(sorted(np.array(my_rope), reverse=True))
 #print "To access all caves without joining rope you'd require, at minimum, the following lengths of rope: "+str(required_rope)

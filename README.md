@@ -5,17 +5,20 @@ This project requires the numpy package for array manipulation and statistics; e
 
 This project runs from the command line:
 
-    usage: .\PLS2.py [<pitchFile>] command
+    Last login: Tue Apr 12 12:49:28 on ttys000
+    Marvin:~ Ari$ .\PLS2.py help
     
-    The first given argument should be your csv file. Default 'pitchFile.csv':
+        usage: .\PLS2.py [<pitchFile>] command
         
-    The following given arguments should be your desired command:
-        reqRope     returns min rope needed for every cave without joining ropes
-        totCave     returns the number of caves to be evaluated
-        noJoinN     returns the number of caves possible without joining ropes
-        noJoinL     returns a list of the caves possible without joining ropes
-        yesJoinN    returns the number of caves possible with joining ropes
-        yesJoinL    returns a list of caves in which rope joining would be required
-        
-    For example, a common usage might be:
-        .\PLS2.py pitchFile.csv reqRope maxCaveN
+        The first given argument should be your csv file. Default 'pitchFile.csv':
+            
+        The following given arguments should be your desired command:
+            reqRope     returns min rope needed for every cave without joining ropes
+            totCave     returns the number of caves to be evaluated
+            noJoinN     returns the number of caves possible without joining ropes
+            noJoinL     returns a list of the caves possible without joining ropes
+            yesJoinN    returns the number of caves possible with joining ropes
+            yesJoinL    returns a list of caves in which rope joining would be required
+            
+        For example, a common usage might be:
+            .\PLS2.py pitchFile.csv reqRope maxCaveN
