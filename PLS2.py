@@ -1,11 +1,29 @@
+#! /usr/bin/env python
+
 import csv
+import sys
 import numpy as np
 from array import array
 
-def readFile():
+usage_string = """usage: .\PLS2.py [<pitchFile>] command
+
+The first given argument should be your csv file. Default 'pitchFile.csv':
+    
+The following given arguments should be your desired command:
+    reqRope     returns min rope needed for every cave without joining ropes
+    totCave     returns the number of caves to be evaluated
+    noJoinN     returns the number of caves possible without joining ropes
+    noJoinL     returns a list of the caves possible without joining ropes
+    yesJoinN    returns the number of caves possible with joining ropes
+    yesJoinL    returns a list of caves in which rope joining would be required
+    
+For example, a common usage might be:
+    .\PLS2.py pitchFile.csv reqRope maxCaveN"""
+
+def readFile(pitchFileName):
     """reads the csv file and outputs it as a python array"""
     mA = []
-    f = open("pitchFile.csv", 'rb') # opens the csv file
+    f = open(pitchFileName, 'rb') # opens the csv file
     try:
         reader = csv.reader(f)  # creates the reader object
         data = list(reader)
@@ -113,21 +131,54 @@ def withTying(given_rope, halfSortedArray, max_pitches, which_caves_var):
     which_caves_var = sorted(np.append(which_caves_var, new_caves_var_possible), reverse=False)
     return which_caves_var, new_caves_var_possible
             
+def argumentProcessing(usage_string):
+    commands = []
+    numArg = len(sys.argv)-1
+    pitchFileName = "pitchFile.csv"
+    if numArg == 0:
+        print usage_string
+        sys.exit()
+    elif numArg > 1:
+        if sys.argv[1][-4:] == ".csv":
+            pitchFileName = sys.argv[1]
+        for i in range(2,numArg+1):
+            commands.append(sys.argv[i])
+    return pitchFileName, commands
 
-my_rope = [50,50,30,30,15] #put your currently owned ropes here, or required_rope to test
+def runArgs(commands, pitchFileName):
+    my_rope = [50,50,30,30,15] #put your currently owned ropes here, or required_rope to test
+    masterArray = readFile(pitchFileName)
+    numericArray, total_caves, max_pitches, total_pitches, pitchesArray = numArray(masterArray)
+    max_pitch_length, min_pitch_length, avg_pitch_length, max_pitch_num, min_pitch_num, avg_pitch_num, sortedArray, halfSortedArray = sortNumeric(numericArray, total_caves, pitchesArray)
+    required_rope = sortedArray[0]
+    caves_accessible, which_caves_var = ropeCheck(my_rope, halfSortedArray, max_pitch_num)
+    which_caves = nameCaves(which_caves_var, masterArray)
+    which_caves_var_updated, new_caves_var_possible = withTying(my_rope, halfSortedArray, max_pitches, which_caves_var)
+    new_cave_names = nameCaves(new_caves_var_possible, masterArray)
+    
+    for i in range (0, len(commands)):
+        if commands[i] == "reqRope":
+            print "reqRope: "+str(required_rope)
+        elif commands[i] == "totCave":
+            print "totCave: "+str(total_caves)
+        elif commands[i] == "noJoinN":
+            print "noJoinN: "+str(caves_accessible)
+        elif commands[i] == "noJoinL":
+            print "noJoinL: "+str(which_caves)
+        elif commands[i] == "yesJoinN":
+            print "yesJoinN: "+str(len(which_caves_var_updated))
+        elif commands[i] == "yesJoinL":
+            print "yesJoinL: "+str(new_cave_names)
+        else:
+            print "Command error!"
+            sys.exit()
+            
+pitchFileName, commands = argumentProcessing(usage_string)
+runArgs(commands, pitchFileName)
 
-masterArray = readFile()
-numericArray, total_caves, max_pitches, total_pitches, pitchesArray = numArray(masterArray)
-max_pitch_length, min_pitch_length, avg_pitch_length, max_pitch_num, min_pitch_num, avg_pitch_num, sortedArray, halfSortedArray = sortNumeric(numericArray, total_caves, pitchesArray)
-required_rope = sortedArray[0]
-caves_accessible, which_caves_var = ropeCheck(my_rope, halfSortedArray, max_pitch_num)
-which_caves = nameCaves(which_caves_var, masterArray)
-which_caves_var_updated, new_caves_var_possible = withTying(my_rope, halfSortedArray, max_pitches, which_caves_var)
-new_cave_names = nameCaves(new_caves_var_possible, masterArray)
-
-print "You've told me that you have the following rope lengths: "+str(sorted(np.array(my_rope), reverse=True))
-print "To access all caves without joining rope you'd require, at minimum, the following lengths of rope: "+str(required_rope)
-print "You can access "+str(caves_accessible)+" of a possible "+str(total_caves)+" caves without joining rope."
-print "These are caves: "+str(which_caves)
-print "If you are happy to join ropes then you can do "+str(len(new_caves_var_possible))+" new caves, for a total of "+str(len(which_caves_var_updated))+" of a possible "+str(total_caves)+" caves."
-print "You will have to join ropes in: "+str(new_cave_names)
+#print "You've told me that you have the following rope lengths: "+str(sorted(np.array(my_rope), reverse=True))
+#print "To access all caves without joining rope you'd require, at minimum, the following lengths of rope: "+str(required_rope)
+#print "You can access "+str(caves_accessible)+" of a possible "+str(total_caves)+" caves without joining rope."
+#print "These are caves: "+str(which_caves)
+#print "If you are happy to join ropes then you can do "+str(len(new_caves_var_possible))+" new caves, for a total of "+str(len(which_caves_var_updated))+" of a possible "+str(total_caves)+" caves."
+#print "You will have to join ropes in: "+str(new_cave_names)
