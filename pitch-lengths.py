@@ -5,7 +5,7 @@ import sys
 import numpy as np
 from array import array
 
-usage_string = """usage: .\PLS2.py [<pitchFile>] command
+usage_string = """usage: .\pitch-lengths.py [<pitchFile>] command
 
 The first given argument should be your csv file. Default 'pitchFile.csv':
     
@@ -18,7 +18,7 @@ The following given arguments should be your desired command:
     yesJoinL    returns a list of caves in which rope joining would be required
     
 For example, a common usage might be:
-    .\PLS2.py pitchFile.csv reqRope totCave"""
+    .\pitch-lengths.py pitchFile.csv reqRope totCave"""
 
 def readFile(pitchFileName):
     """reads the csv file and outputs it as a python array"""

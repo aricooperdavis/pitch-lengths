@@ -5,14 +5,14 @@ This project requires the numpy package for array manipulation and statistics; e
 
 For the moment this project runs from the command line; so ensure that the .csv file is in the same folder as the PLS2.py file, and make the PLS2.py file executable by navigating to the folder and running:
 
-    chmod u+x PLS2.py
+    chmod u+x pitch-lengths.py
     
 An example operation is shown below:
 
     Last login: Tue Apr 12 12:49:28 on ttys000
-    Marvin:~ Ari$ .\PLS2.py help
+    Marvin:~ Ari$ .\pitch-lengths.py help
     
-        usage: .\PLS2.py [<pitchFile>] command
+        usage: .\pitch-lengths.py [<pitchFile>] command
         
         The first given argument should be your csv file. Default 'pitchFile.csv':
             
@@ -25,4 +25,6 @@ An example operation is shown below:
             yesJoinL    returns a list of caves in which rope joining would be required
             
         For example, a common usage might be:
-            .\PLS2.py pitchFile.csv reqRope totCave
+            .\pitch-lengths.py pitchFile.csv reqRope totCave
+
+Please feel free to ask any questions or get involved with the development of this project.
