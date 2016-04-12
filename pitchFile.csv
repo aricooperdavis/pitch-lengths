@@ -1,45 +1,45 @@
-# Cave,Number of Pitches,Pitch 1, Pitch 2, Pitch 3...
+# Cave,Pitch 1, Pitch 2, Pitch 3...
 # Quoted lengths are rope rigging lengths, not pitch lengths
 
 # Data from http://www.braemoor.co.uk/caving/directory.shtml
-Aygill Caverns,2,9,17
-Bar Pot Alternative,4,30,15,10,55
-Bar Pot,2,20,37
-Dome Pot Alternative,2,19,22
-Echo Rift,1,24
-Marilyn,2,40,35
-Aquamole Pot,4,25,45,18,55
-North Shaft,1,19
-De Profundis,3,20,28,20
-BUSS Route,3,25,12,45
-Rat Hole,3,35,60,40
-Small Mammall Pot,1,30
-Wades Entrance,5,25,8,18,7,49
+Aygill Caverns,9,17
+Bar Pot Alternative,30,15,10,55
+Bar Pot,20,37
+Dome Pot Alternative,19,22
+Echo Rift,24
+Marilyn,40,35
+Aquamole Pot,25,45,18,55
+North Shaft,19
+De Profundis,20,28,20
+BUSS Route,25,12,45
+Rat Hole,35,60,40
+Small Mammall Pot,30
+Wades Entrance,25,8,18,7,49
 
 # Data from http://www.resinanchor.co.uk/6.html
-Boxhead Pot,4,40,45,40,15
-Its a Cracker,3,42,45,32
-Long Drop Cave,3,12,10,45
-Rift Pot (The Allotment),5,40,15,10,25,50
+Boxhead Pot,40,45,40,15
+Its a Cracker,42,45,32
+Long Drop Cave,12,10,45
+Rift Pot (The Allotment),40,15,10,25,50
 
 # Data from http://www.rrcpc.org.uk/easegill/text/leck.htm
-Rumbling Hole,5,45,30,40,30,30
-Deaths Head Hole,2,80,25
-Deaths Head (Big Meanie),2,70,35
-Gavel Pot,5,20,17,15,55,40
-Irby Fell,5,35,30,10,35,15
-Lost Johns (Monastery),5,10,10,50,15,50
-Lost Johns (Centipede),5,10,60,30,50,30
-Lost Johns (Dome),6,10,10,30,30,15,20
-Notts Pot (Left),5,20,15,55,25,15
-Notts Pot (Centre),7,20,15,35,55,50,55,15
-Notts Pot (Adamsons),3,20,25,55
-Short Drop Cave,1,20
+Rumbling Hole,45,30,40,30,30
+Deaths Head Hole,80,25
+Deaths Head (Big Meanie),70,35
+Gavel Pot,20,17,15,55,40
+Irby Fell,35,30,10,35,15
+Lost Johns (Monastery),10,10,50,15,50
+Lost Johns (Centipede),10,60,30,50,30
+Lost Johns (Dome),10,10,30,30,15,20
+Notts Pot (Left),20,15,55,25,15
+Notts Pot (Centre),20,15,35,55,50,55,15
+Notts Pot (Adamsons),20,25,55
+Short Drop Cave,20
 
 # Data from http://www.cncc.org.uk/doc/114
-Rowten Pot (Eye Hole) - CNCC,4,40,70,35,35
-Rowten Pot (Big Gully) - CNCC,6,55,30,30,50,40,30
+Rowten Pot (Eye Hole) - CNCC,40,70,35,35
+Rowten Pot (Big Gully) - CNCC,55,30,30,50,40,30
 
 # Data from http://www.peakdistrictcaving.info/peak-district-caves.htm
-Eldon Hole West,2,80,45
-Gautries Hole,1,10
+Eldon Hole West,80,45
+Gautries Hole,10

@@ -41,9 +41,10 @@ def readFile(pitchFileName):
                 elif row[0][0] == "#":
                     continue #do nothing
                 mA.append(row)
-            
     finally:
         f.close()      # closing
+    for i in range(0,len(mA)):
+        mA[i].insert(1,len(mA[i])-1)
     return mA
 
 def numArray(mA):
