@@ -4,6 +4,7 @@ import csv
 import sys
 import json
 import numpy as np
+import matplotlib.pyplot as plt
 from array import array
 
 usage_string = """usage: .\pitch-lengths.py <pitchFile> command(s)
@@ -18,6 +19,7 @@ The following commands can be run:
     noJoinL     returns a list of the caves possible without joining ropes
     yesJoinN    returns the number of caves possible with joining ropes
     yesJoinL    returns a list of caves in which rope joining would be required
+    histogram   displays a histogram of the pitch inforamtion (experimental)
     help        displays this usage information
 
 Some of these commands will require you to specify the rope you have using:
@@ -138,7 +140,17 @@ def withTying(given_rope, halfSortedArray, max_pitches, which_caves_var):
                 new_caves_var_possible = np.unique(new_caves_var_possible) 
     which_caves_var = sorted(np.append(which_caves_var, new_caves_var_possible), reverse=False)
     return which_caves_var, new_caves_var_possible
-            
+
+def makeHistogram(numericArray):
+    numericList = np.trim_zeros(sorted(numericArray.flatten()))
+    n, bins, patches = plt.hist(numericList, bins=10, normed=1, facecolor='green', alpha=0.75)
+    plt.title(r'$\mathrm{Histogram\ of\ pitch\ lengths}$')
+    plt.xlabel('Pitch Length')
+    plt.ylabel('Probability')
+    plt.axis([0, 90, 0, 0.04])
+    plt.grid(True)
+    plt.show()
+
 def argumentProcessing(usage_string):
     """processes command line arguments"""
     commands = []
@@ -191,6 +203,9 @@ def runArgs(commands, pitchFileName, usage_string):
                     print "yesJoinN: "+str(len(which_caves_var_updated))
                 elif commands[i] == "yesJoinL":
                     print "yesJoinL: "+str(new_cave_names)
+                elif commands[i] == "histogram":
+                    print "Displaying histogram."
+                    makeHistogram(numericArray)
                 else:
                     print "Command error!"
                     sys.exit()

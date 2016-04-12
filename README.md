@@ -14,10 +14,10 @@ An example operation is shown below:
     Marvin:~ Ari$ .\pitch-lengths.py help
     
         usage: .\pitch-lengths.py <pitchFile> command(s)
-        
+
         The <pitchFile> argument should contain the name of your file.
         If no name is given this defaults to 'pitchFile.csv'.
-            
+    
         The following commands can be run:
             reqRope     returns min rope needed for every cave without joining ropes
             totCave     returns the number of caves to be evaluated
@@ -25,11 +25,12 @@ An example operation is shown below:
             noJoinL     returns a list of the caves possible without joining ropes
             yesJoinN    returns the number of caves possible with joining ropes
             yesJoinL    returns a list of caves in which rope joining would be required
+            histogram   displays a histogram of the pitch inforamtion (experimental)
             help        displays this usage information
         
         Some of these commands will require you to specify the rope you have using:
             .\pitch-lengths.py update_rope
-        
+
         For example, a common usage might be:
             .\pitch-lengths.py pitchFile.csv reqRope totCave
         
