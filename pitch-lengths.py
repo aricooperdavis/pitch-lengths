@@ -2,21 +2,27 @@
 
 import csv
 import sys
+import json
 import numpy as np
 from array import array
 
-usage_string = """usage: .\pitch-lengths.py [<pitchFile>] command
+usage_string = """usage: .\pitch-lengths.py <pitchFile> command [command]
 
-The first given argument should be your csv file. Default 'pitchFile.csv':
+The <pitchFile> argument should contain the name of your file.
+If no name is given this defaults to 'pitchFile.csv'.
     
-The following given arguments should be your desired command:
+The following commands can be run:
     reqRope     returns min rope needed for every cave without joining ropes
     totCave     returns the number of caves to be evaluated
     noJoinN     returns the number of caves possible without joining ropes
     noJoinL     returns a list of the caves possible without joining ropes
     yesJoinN    returns the number of caves possible with joining ropes
     yesJoinL    returns a list of caves in which rope joining would be required
-    
+    help        displays this usage information
+
+Some of these commands will require you to specify the rope you have using:
+    .\pitch-lengths.py update_rope
+
 For example, a common usage might be:
     .\pitch-lengths.py pitchFile.csv reqRope totCave"""
 
@@ -152,35 +158,68 @@ def argumentProcessing(usage_string):
     return pitchFileName, commands
 
 def runArgs(commands, pitchFileName, usage_string):
-    my_rope = [50,50,30,30,15] #put your currently owned ropes here, or required_rope to test
-    masterArray = readFile(pitchFileName)
-    numericArray, total_caves, max_pitches, total_pitches, pitchesArray = numArray(masterArray)
-    max_pitch_length, min_pitch_length, avg_pitch_length, max_pitch_num, min_pitch_num, avg_pitch_num, sortedArray, halfSortedArray = sortNumeric(numericArray, total_caves, pitchesArray)
-    required_rope = sortedArray[0]
-    caves_accessible, which_caves_var = ropeCheck(my_rope, halfSortedArray, max_pitch_num)
-    which_caves = nameCaves(which_caves_var, masterArray)
-    which_caves_var_updated, new_caves_var_possible = withTying(my_rope, halfSortedArray, max_pitches, which_caves_var)
-    new_cave_names = nameCaves(new_caves_var_possible, masterArray)
-    
     for i in range (0, len(commands)):
-        if commands[i] == "reqRope":
-            print "reqRope: "+str(required_rope)
-        elif commands[i] == "totCave":
-            print "totCave: "+str(total_caves)
-        elif commands[i] == "noJoinN":
-            print "noJoinN: "+str(caves_accessible)
-        elif commands[i] == "noJoinL":
-            print "noJoinL: "+str(which_caves)
-        elif commands[i] == "yesJoinN":
-            print "yesJoinN: "+str(len(which_caves_var_updated))
-        elif commands[i] == "yesJoinL":
-            print "yesJoinL: "+str(new_cave_names)
-        elif commands[i] == "help" or "Help" or "HELP":
+        if commands[i] == "help" or commands[i] == "Help" or commands[i] == "HELP":
             print usage_string
             sys.exit()
+        elif commands[i] == "update_rope":
+            write_rope()
         else:
-            print "Command error!"
+            masterArray = readFile(pitchFileName)
+            numericArray, total_caves, max_pitches, total_pitches, pitchesArray = numArray(masterArray)
+            max_pitch_length, min_pitch_length, avg_pitch_length, max_pitch_num, min_pitch_num, avg_pitch_num, sortedArray, halfSortedArray = sortNumeric(numericArray, total_caves, pitchesArray)
+            required_rope = sortedArray[0]
+            if commands[i] == "reqRope":
+                print "reqRope: "+str(required_rope)
+            elif commands[i] == "totCave":
+                print "totCave: "+str(total_caves)
+            else:
+                my_rope = read_rope()
+                caves_accessible, which_caves_var = ropeCheck(my_rope, halfSortedArray, max_pitch_num)
+                which_caves = nameCaves(which_caves_var, masterArray)
+                which_caves_var_updated, new_caves_var_possible = withTying(my_rope, halfSortedArray, max_pitches, which_caves_var)
+                new_cave_names = nameCaves(new_caves_var_possible, masterArray)
+                if commands[i] == "noJoinN":
+                    print "noJoinN: "+str(caves_accessible)
+                elif commands[i] == "noJoinL":
+                    print "noJoinL: "+str(which_caves)
+                elif commands[i] == "yesJoinN":
+                    print "yesJoinN: "+str(len(which_caves_var_updated))
+                elif commands[i] == "yesJoinL":
+                    print "yesJoinL: "+str(new_cave_names)
+                else:
+                    print "Command error!"
+                    sys.exit()
+    
+def read_rope():
+    try:
+        rope_file = open('.rope_file.txt', 'r')
+        my_rope = json.load(rope_file)
+        if my_rope == "":
+            print "This feature requires your rope lengths; please update this using: "+"\n"+"./pitch-lengths.py update_rope"
+            rope_file.close()
             sys.exit()
+        else:
+            rope_file.close()
+            return my_rope
+    except:
+        print "This feature requires your rope lengths; please update this using: "+"\n"+"./pitch-lengths.py update_rope"
+        sys.exit()
+    
+def write_rope():
+    rope_file = open('.rope_file.txt', 'w')
+    my_rope = []
+    end_ask = 0
+    print "To update your rope lengths enter the length of your ropes one by one and press enter after each rope. Once you've run out of ropes just press enter."
+    while end_ask != 100:
+        rope = raw_input("Rope "+str(end_ask+1)+": ")
+        if rope != "":
+            my_rope.append(int(rope))
+            end_ask += 1
+        else:
+            end_ask = 100
+    rope_file.write(str(my_rope))
+    rope_file.close()
             
 pitchFileName, commands = argumentProcessing(usage_string)
 runArgs(commands, pitchFileName, usage_string)
