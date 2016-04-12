@@ -3,7 +3,8 @@ The pitch-lengths project intends to make rope buying decisions easier for those
 
 This project requires the numpy package for array manipulation and statistics; everything else should be included in your python package.
 
-For the moment this project runs from the command line; so ensure that the .csv file is in the same folder as the PLS2.py file, and make the PLS2.py file executable by navigating to the folder and running:
+For the moment this project runs from the command line; so ensure that the .csv file is in the same folder as the pitch-lengths.py file.
+This should be the case by default if you download the zipped project, but you do need to make the pitch-lengths.py file executable by navigating to the folder and running:
 
     chmod u+x pitch-lengths.py
     
