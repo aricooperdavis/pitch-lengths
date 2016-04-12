@@ -6,7 +6,7 @@ import json
 import numpy as np
 from array import array
 
-usage_string = """usage: .\pitch-lengths.py <pitchFile> command [command]
+usage_string = """usage: .\pitch-lengths.py <pitchFile> command(s)
 
 The <pitchFile> argument should contain the name of your file.
 If no name is given this defaults to 'pitchFile.csv'.
