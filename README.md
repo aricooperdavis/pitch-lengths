@@ -13,7 +13,7 @@ An example operation is shown below:
     Last login: Tue Apr 12 12:49:28 on ttys000
     Marvin:~ Ari$ .\pitch-lengths.py help
     
-        usage: .\pitch-lengths.py <pitchFile> command [command]
+        usage: .\pitch-lengths.py <pitchFile> command(s)
         
         The <pitchFile> argument should contain the name of your file.
         If no name is given this defaults to 'pitchFile.csv'.
