@@ -223,10 +223,3 @@ def write_rope():
             
 pitchFileName, commands = argumentProcessing(usage_string)
 runArgs(commands, pitchFileName, usage_string)
-
-#print "You've told me that you have the following rope lengths: "+str(sorted(np.array(my_rope), reverse=True))
-#print "To access all caves without joining rope you'd require, at minimum, the following lengths of rope: "+str(required_rope)
-#print "You can access "+str(caves_accessible)+" of a possible "+str(total_caves)+" caves without joining rope."
-#print "These are caves: "+str(which_caves)
-#print "If you are happy to join ropes then you can do "+str(len(new_caves_var_possible))+" new caves, for a total of "+str(len(which_caves_var_updated))+" of a possible "+str(total_caves)+" caves."
-#print "You will have to join ropes in: "+str(new_cave_names)
