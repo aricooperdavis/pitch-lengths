@@ -147,7 +147,7 @@ def makeHistogram(numericArray):
     plt.title(r'$\mathrm{Histogram\ of\ pitch\ lengths}$')
     plt.xlabel('Pitch Length')
     plt.ylabel('Probability')
-    plt.axis([np.amin(numericArray)-1, np.amax(numericArray)+1, 0, 0.04])
+    plt.axis([np.amin(numericArray), np.amax(numericArray), 0, 0.04])
     plt.grid(True)
     plt.show()
 
