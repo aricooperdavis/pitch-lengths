@@ -25,4 +25,4 @@ An example operation is shown below:
             yesJoinL    returns a list of caves in which rope joining would be required
             
         For example, a common usage might be:
-            .\PLS2.py pitchFile.csv reqRope maxCaveN
+            .\PLS2.py pitchFile.csv reqRope totCave
