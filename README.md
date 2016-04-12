@@ -1,7 +1,7 @@
 # pitch-lengths
 The pitch-lengths project intends to make rope buying decisions easier for those interested in SRT caving in the UK. Its central aim is the creation of a .csv file containing required rope lengths for caves across the country, and the statistical analysis of this data to inform rope buying for clubs.
 
-This project is designed for a unix operating system and requires the numpy package for array manipulation and statistics; everything else should be included in your python package. It should be easy to get it running on Windows, but I have no experience with that.
+This project is designed for a unix operating system and requires the numpy package for array manipulation and statistics, and the matplotlib.pyplot package for histogram plotting (experimental!); everything else should be included in your python package. It should be easy to get it running on Windows, but I have no experience with that.
 
 For the moment this project runs from the command line; so ensure that the .csv file is in the same folder as the pitch-lengths.py file.
 This should be the case by default if you download the zipped project, but you do need to make the pitch-lengths.py file executable by navigating to the folder and running:
