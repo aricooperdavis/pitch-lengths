@@ -115,6 +115,7 @@ def ropeCheck(given_rope, halfSortedArray, max_pitches):
     return caves_accessible, which_caves_var
 
 def nameCaves(which_caves_var, masterArray):
+    """given cave variables returns the names of the caves"""
     which_caves = []
     if type(which_caves_var) is not list:
         which_caves_var = which_caves_var.astype(int)
@@ -123,6 +124,7 @@ def nameCaves(which_caves_var, masterArray):
     return which_caves
 
 def withTying(given_rope, halfSortedArray, max_pitches, which_caves_var):
+    """given a length of rope returns the caves that would be possible with tying it together"""
     new_caves_var_possible = np.zeros(0)
     for i in range (0, len(given_rope)-1):
         for j in range (1, len(given_rope)-i):
@@ -138,6 +140,7 @@ def withTying(given_rope, halfSortedArray, max_pitches, which_caves_var):
     return which_caves_var, new_caves_var_possible
             
 def argumentProcessing(usage_string):
+    """processes command line arguments"""
     commands = []
     sub=0
     numArg = len(sys.argv)-1
@@ -158,6 +161,7 @@ def argumentProcessing(usage_string):
     return pitchFileName, commands
 
 def runArgs(commands, pitchFileName, usage_string):
+    """runs command line arguments processed above"""
     for i in range (0, len(commands)):
         if commands[i] == "help" or commands[i] == "Help" or commands[i] == "HELP":
             print usage_string
@@ -192,6 +196,7 @@ def runArgs(commands, pitchFileName, usage_string):
                     sys.exit()
     
 def read_rope():
+    """reads rope values from hidden .rope_file.text"""
     try:
         rope_file = open('.rope_file.txt', 'r')
         my_rope = json.load(rope_file)
@@ -207,6 +212,7 @@ def read_rope():
         sys.exit()
     
 def write_rope():
+    """creates hidden rope_file.text by asking for rope lengths"""
     rope_file = open('.rope_file.txt', 'w')
     my_rope = []
     end_ask = 0
