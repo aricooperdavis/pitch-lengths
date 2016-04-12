@@ -18,7 +18,7 @@ The following given arguments should be your desired command:
     yesJoinL    returns a list of caves in which rope joining would be required
     
 For example, a common usage might be:
-    .\PLS2.py pitchFile.csv reqRope maxCaveN"""
+    .\PLS2.py pitchFile.csv reqRope totCave"""
 
 def readFile(pitchFileName):
     """reads the csv file and outputs it as a python array"""
