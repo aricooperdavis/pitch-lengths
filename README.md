@@ -21,6 +21,7 @@ An example operation is shown below:
         If no name is given this defaults to 'pitchFile.csv'.
     
         The following commands can be run:
+            my_rope             the rope given by the user
             ideal_rope          min rope needed for every cave w/o joining ropes
             total_caves         number of caves in .csv file
             num_poss_norm       number of caves possible w/o joining ropes

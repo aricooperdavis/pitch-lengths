@@ -13,6 +13,7 @@ The <pitchFile> argument should contain the name of your file.
 If no name is given this defaults to 'pitchFile.csv'.
     
 The following commands can be run:
+    my_rope             the rope given by the user
     ideal_rope          min rope needed for every cave w/o joining ropes
     total_caves         number of caves in .csv file
     num_poss_norm       number of caves possible w/o joining ropes
@@ -198,6 +199,8 @@ def runArgs(commands, pitchFileName, usage_string):
                 new_cave_names = nameCaves(new_caves_var_possible, masterArray)
                 if commands[i] == "num_poss_norm":
                     print "num_poss_norm: "+str(caves_accessible)
+                elif commands[i] == "my_rope":
+                    print "my_rope: "+str(my_rope)
                 elif commands[i] == "list_poss_norm":
                     print "list_poss_norm: "+str(which_caves)
                 elif commands[i] == "num_poss_join":
