@@ -193,7 +193,7 @@ def runArgs(commands, pitchFileName, usage_string):
                 print "Minimum pitch length: "+str(min_pitch_length)
                 print "Maximum pitch length: "+str(max_pitch_length)
                 print "Mean pitch length: "+str(np.mean(numericList))
-                print "Mediam pitch length: "+str(np.median(numericList))
+                print "Median pitch length: "+str(np.median(numericList))
                 print "Modal pitch length: "+str(max(set(numericList), key=numericList.count))
             elif commands[i] == "total_caves":
                 print "total_caves: "+str(total_caves)
@@ -204,8 +204,8 @@ def runArgs(commands, pitchFileName, usage_string):
                 which_caves_var_updated, new_caves_var_possible = withTying(my_rope, halfSortedArray, max_pitches, which_caves_var)
                 new_cave_names = nameCaves(new_caves_var_possible, masterArray)
                 if commands[i] == "number_possible":
-                    print "Without rope joining: "+str(caves_accessible)
-                    print "With rope joining: "+str(len(which_caves_var_updated))
+                    print "Without rope joining: "+str(caves_accessible)+" or "+str(np.around(100.0*caves_accessible/float(total_caves), decimals=2))+"%"
+                    print "With rope joining: "+str(len(which_caves_var_updated))+" or "+str(np.around(100.0*len(which_caves_var_updated)/float(total_caves), decimals=2))+"%"
                 elif commands[i] == "my_rope":
                     print "my_rope: "+str(my_rope)
                 elif commands[i] == "list_poss_norm":
