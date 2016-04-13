@@ -16,11 +16,9 @@ The following commands can be run:
     my_rope             the rope given by the user
     ideal_rope          min rope needed for every cave w/o joining ropes
     total_caves         number of caves in .csv file
-    min_max             minimum and maximum pitch lengths
-    mean_median_mode    mean, median, and mode pitch lengths
-    num_poss_norm       number of caves possible w/o joining ropes
+    stats               minimum, maximum mean, median, and mode pitch lengths
+    number_possible     number of caves possible w & w/o rope joining
     list_poss_norm      list of the caves possible w/o joining ropes
-    num_poss_join       number of caves possible w/ joining ropes
     list_poss_join      list of caves in which rope joining is required
     histogram           display histogram of all pitch (experimental)
     help                displays this usage information
@@ -191,10 +189,12 @@ def runArgs(commands, pitchFileName, usage_string):
             required_rope = sortedArray[0]
             if commands[i] == "ideal_rope":
                 print "ideal_rope: "+str(required_rope)
-            elif commands[i] == "min_max":
-                print "min_max: "+str(min_pitch_length)+", "+str(max_pitch_length)
-            elif commands[i] == "mean_median_mode":
-                print "mean, median, mode: "+str(np.mean(numericList))+", "+str(np.median(numericList))+", "+str(max(set(numericList), key=numericList.count))
+            elif commands[i] == "stats":
+                print "Minimum pitch length: "+str(min_pitch_length)
+                print "Maximum pitch length: "+str(max_pitch_length)
+                print "Mean pitch length: "+str(np.mean(numericList))
+                print "Mediam pitch length: "+str(np.median(numericList))
+                print "Modal pitch length: "+str(max(set(numericList), key=numericList.count))
             elif commands[i] == "total_caves":
                 print "total_caves: "+str(total_caves)
             else:
@@ -203,14 +203,13 @@ def runArgs(commands, pitchFileName, usage_string):
                 which_caves = nameCaves(which_caves_var, masterArray)
                 which_caves_var_updated, new_caves_var_possible = withTying(my_rope, halfSortedArray, max_pitches, which_caves_var)
                 new_cave_names = nameCaves(new_caves_var_possible, masterArray)
-                if commands[i] == "num_poss_norm":
-                    print "num_poss_norm: "+str(caves_accessible)
+                if commands[i] == "number_possible":
+                    print "Without rope joining: "+str(caves_accessible)
+                    print "With rope joining: "+str(len(which_caves_var_updated))
                 elif commands[i] == "my_rope":
                     print "my_rope: "+str(my_rope)
                 elif commands[i] == "list_poss_norm":
                     print "list_poss_norm: "+str(which_caves)
-                elif commands[i] == "num_poss_join":
-                    print "num_poss_join: "+str(len(which_caves_var_updated))
                 elif commands[i] == "list_poss_join":
                     print "list_poss_join: "+str(new_cave_names)
                 elif commands[i] == "histogram":
