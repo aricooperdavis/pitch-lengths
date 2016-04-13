@@ -145,7 +145,7 @@ def withTying(given_rope, halfSortedArray, max_pitches, which_caves_var):
 
 def makeHistogram(numericArray):
     numericList = np.trim_zeros(sorted(numericArray.flatten()))
-    n, bins, patches = plt.hist(numericList, bins=9, normed=1, facecolor='green', alpha=0.75)
+    n, bins, patches = plt.hist(numericList, bins=20, normed=1, facecolor='green', alpha=0.75)
     plt.title(r'$\mathrm{Histogram\ of\ pitch\ lengths}$')
     plt.xlabel('Pitch Length')
     plt.ylabel('Probability')
