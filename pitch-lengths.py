@@ -145,7 +145,7 @@ def withTying(given_rope, halfSortedArray, max_pitches, which_caves_var):
     which_caves_var = sorted(np.append(which_caves_var, new_caves_var_possible), reverse=False)
     return which_caves_var, new_caves_var_possible
 
-def makeHistogram(numericList):
+def makeHistogram(numericArray, numericList):
     n, bins, patches = plt.hist(numericList, bins=20, normed=1, facecolor='green', alpha=0.75)
     plt.title(r'$\mathrm{Histogram\ of\ pitch\ lengths}$')
     plt.xlabel('Pitch Length')
@@ -215,7 +215,7 @@ def runArgs(commands, pitchFileName, usage_string):
                     print "list_poss_join: "+str(new_cave_names)
                 elif commands[i] == "histogram":
                     print "Displaying histogram."
-                    makeHistogram(numericArray)
+                    makeHistogram(numericArray, numericList)
                 else:
                     print "Command error!"
                     sys.exit()
