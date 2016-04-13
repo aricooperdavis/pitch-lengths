@@ -24,6 +24,8 @@ An example operation is shown below:
             my_rope             the rope given by the user
             ideal_rope          min rope needed for every cave w/o joining ropes
             total_caves         number of caves in .csv file
+            min_max             minimum and maximum pitch lengths
+            mean_median_mode    mean, median, and mode pitch lengths
             num_poss_norm       number of caves possible w/o joining ropes
             list_poss_norm      list of the caves possible w/o joining ropes
             num_poss_join       number of caves possible w/ joining ropes

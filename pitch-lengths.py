@@ -16,6 +16,8 @@ The following commands can be run:
     my_rope             the rope given by the user
     ideal_rope          min rope needed for every cave w/o joining ropes
     total_caves         number of caves in .csv file
+    min_max             minimum and maximum pitch lengths
+    mean_median_mode    mean, median, and mode pitch lengths
     num_poss_norm       number of caves possible w/o joining ropes
     list_poss_norm      list of the caves possible w/o joining ropes
     num_poss_join       number of caves possible w/ joining ropes
@@ -143,8 +145,7 @@ def withTying(given_rope, halfSortedArray, max_pitches, which_caves_var):
     which_caves_var = sorted(np.append(which_caves_var, new_caves_var_possible), reverse=False)
     return which_caves_var, new_caves_var_possible
 
-def makeHistogram(numericArray):
-    numericList = np.trim_zeros(sorted(numericArray.flatten()))
+def makeHistogram(numericList):
     n, bins, patches = plt.hist(numericList, bins=20, normed=1, facecolor='green', alpha=0.75)
     plt.title(r'$\mathrm{Histogram\ of\ pitch\ lengths}$')
     plt.xlabel('Pitch Length')
@@ -185,10 +186,15 @@ def runArgs(commands, pitchFileName, usage_string):
         else:
             masterArray = readFile(pitchFileName)
             numericArray, total_caves, max_pitches, total_pitches, pitchesArray = numArray(masterArray)
+            numericList = np.trim_zeros(sorted(numericArray.flatten()))
             max_pitch_length, min_pitch_length, avg_pitch_length, max_pitch_num, min_pitch_num, avg_pitch_num, sortedArray, halfSortedArray = sortNumeric(numericArray, total_caves, pitchesArray)
             required_rope = sortedArray[0]
             if commands[i] == "ideal_rope":
                 print "ideal_rope: "+str(required_rope)
+            elif commands[i] == "min_max":
+                print "min_max: "+str(min_pitch_length)+", "+str(max_pitch_length)
+            elif commands[i] == "mean_median_mode":
+                print "mean, median, mode: "+str(np.mean(numericList))+", "+str(np.median(numericList))+", "+str(max(set(numericList), key=numericList.count))
             elif commands[i] == "total_caves":
                 print "total_caves: "+str(total_caves)
             else:
