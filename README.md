@@ -37,4 +37,6 @@ An example operation is shown below:
         For example, a common usage might be:
             .\pitch-lengths.py pitchFile.csv ideal_rope total_caves
         
+Alternatively the pl-pandas.py can be used if your system includes the Pandas package. Again this will need to be made executable, and whilst in the experimental stage assumes that your pitch file is called pitchFile.csv.
+
 Please feel free to ask any questions or get involved with the development of this project.
