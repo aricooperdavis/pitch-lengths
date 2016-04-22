@@ -17,7 +17,7 @@ Small Mammall Pot,30
 Wades Entrance,25,8,18,7,49
 
 # Data from http://www.resinanchor.co.uk/6.html
-Boxhead Pot,40,45,40,15
+Boxhead Pot,55,75,80,30
 Its a Cracker,42,45,32
 Long Drop Cave,12,10,45
 Rift Pot (The Allotment),40,15,10,25,50
@@ -29,12 +29,12 @@ Deaths Head (Big Meanie),70,35
 Gavel Pot,20,17,15,55,40
 Irby Fell,35,30,10,35,15
 Lost Johns (Monastery),10,10,50,15,50
-Lost Johns (Centipede),10,60,30,50,30
-Lost Johns (Dome),10,10,30,30,15,20
+Lost Johns (Centipede),10,60,30,25,45,50,25
+Lost Johns (Dome),10,10,30,30,25,15,15,20
 Notts Pot (Left),20,15,55,25,15
 Notts Pot (Centre),20,15,35,55,50,55,15
 Notts Pot (Adamsons),20,25,55
-Short Drop Cave,20
+Short Drop Cave,20,50,30
 
 # Data from http://www.cncc.org.uk/doc/114
 Rowten Pot (Eye Hole) - CNCC,40,70,35,35
@@ -107,3 +107,58 @@ Bwlch y Plwm,45,31
 Parc 2 to 3,12,56
 Wrysgan Slate Quarry,50,30,25
 Cwmorthyn,18,15,30,25,50,18,15
+
+#Data from Northern Caving
+Shuttleworth Pot,20,60
+Pool Sink,25,55,20
+Cow Pot,30,30,60
+Top Sink,30,15
+Bull Pot of the Witches,25,20,30,25
+Yordas,30,10,10,40
+Bull Pot,20,20,30,30,30,30
+Swinsto Hole,15,10,25,25,60,35,15,20
+Jingling Pot,60,65,35,45,25,20
+Hero,20,25,30
+Vesper Pot,15,45,45,55
+Spectacle,10,10,50,20
+Brown Hill Pot,6,30,80,15
+Simpon's Pot,20,10,10,10,15,10,15,20,15,15,15,50,30,15,20
+Nick Pot,35,25,80
+Juniper Gulf,25,45,30,30,60
+Long Kin East Cave,10,40,85
+Hurnel Moss,30,55,55,20
+Marilyn,40,35
+Gaping Ghyll,120
+Jib Tunnel,110
+Rat Hole,40,60,45
+Grange Rigg Pot,24,10,15,20,10,20,15
+Christmas Pot,40,30,20,15
+Henslers Pot,20,35,25,15,45
+Stream Passage Pot,25,40,50,37
+Long Kin West,45,55,15,70
+Pillar Holes (1),50
+Pillar Holes (2),20,30,50
+Pillar Holes (3),20
+Tatham Wife Hole,10,45,30,20
+Sunset Hole,10,15,15,35
+Hardrawkin Pot,40,40
+Meregill Hole,25,20,40,30,85,40,25
+Black Shiver Pot,30,20,25,55,60,15,8
+Roaring Hole,30,20,15,30,15
+Marble Steps Pot (Snow),20
+Marble Steps Pot (Gully),60,40
+Marble Steps Pot (Wet),30,20
+Marble Steps Pot (Sidewinder),45,60
+New Rift Pot,30,25,50,50
+Large Pot,25,50,5,5,50
+Ireby Fell Cavern,35,30,10,35,15,65
+Alum Pot,25,25,35,45,80,20
+Alum Pot (Alt),35,25,35,20,40,20
+Diccan Pot,70,35,60
+Calf Holes,25,35,10,30,30
+Sell Gill Holes,15,30,30
+Sell Gill Holes (Goblin),45,45
+Little Hull Pot,40,70,25
+Hunt Pot,75
+Out Sleets Beck Pot,10,15,28,30
+New Goyden Pot,25,20
